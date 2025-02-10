@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bywetdfvxh1i5"]
+
+[ext_resource type="FontFile" uid="uid://bvlmejai7wyak" path="res://assets/fonts/Kenney Future Narrow.ttf" id="1_jh2j8"]
+
+[sub_resource type="FontVariation" id="FontVariation_cuagf"]
+base_font = ExtResource("1_jh2j8")
+
+[resource]
+default_font = SubResource("FontVariation_cuagf")
+default_font_size = 24
+MarginContainer/constants/margin_bottom = 25
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 25
+VBoxContainer/constants/separation = 16
