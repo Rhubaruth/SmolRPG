@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc8ooitu6pyxh"]
+
+[ext_resource type="PackedScene" uid="uid://b3fsd16mompj2" path="res://scenes/components/gun-components/gun_component.tscn" id="1_f7t40"]
+[ext_resource type="Script" path="res://scenes/components/gun-components/gun_missile.gd" id="2_42l8x"]
+[ext_resource type="Texture2D" uid="uid://cmnq53cdv671" path="res://assets/towers/tops/towerDefense_tile228.png" id="2_q22wi"]
+[ext_resource type="Texture2D" uid="uid://cd3jw5lucpn76" path="res://assets/towers/tops/towerDefense_tile251.png" id="3_aups0"]
+[ext_resource type="PackedScene" uid="uid://dehom0tbmsngo" path="res://scenes/projectiles/projectile.tscn" id="3_g1i7r"]
+
+[node name="GunComponent" instance=ExtResource("1_f7t40")]
+script = ExtResource("2_42l8x")
+MissileProjectile = ExtResource("3_g1i7r")
+
+[node name="Top" parent="." index="0"]
+texture = ExtResource("2_q22wi")
+
+[node name="M1" type="Sprite2D" parent="Top" index="0"]
+show_behind_parent = true
+position = Vector2(16, -8)
+texture = ExtResource("3_aups0")
+
+[node name="M2" type="Sprite2D" parent="Top" index="1"]
+show_behind_parent = true
+position = Vector2(16, 8)
+texture = ExtResource("3_aups0")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TurretStats" load_steps=2 format=3 uid="uid://dley6g6tdsvvm"]
+
+[ext_resource type="Script" path="res://resources/resources/turrets/turret_stats.gd" id="1_5us1r"]
+
+[resource]
+script = ExtResource("1_5us1r")
+SPRITE_PATH = "res://assets/towers/tops/towerDefense_tile250.png"
+DAMAGE = 1
+FIRE_DELAY = 0.8
+ROTATION_SPEED = 50
+RANGE = 224.0

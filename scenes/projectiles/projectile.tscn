@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dehom0tbmsngo"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/projectile.gd" id="1_p4fuw"]
+[ext_resource type="Texture2D" uid="uid://cd3jw5lucpn76" path="res://assets/towers/tops/towerDefense_tile251.png" id="2_b6c2q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i350o"]
+radius = 6.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n68hh"]
+radius = 80.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_p4fuw")
+
+[node name="Bullet1" type="Sprite2D" parent="."]
+texture = ExtResource("2_b6c2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i350o")
+debug_color = Color(0.773952, 0.605566, 0, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_n68hh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

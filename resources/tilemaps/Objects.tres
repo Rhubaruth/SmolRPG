@@ -1,8 +1,14 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://buovb08042xf3"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://buovb08042xf3"]
 
 [ext_resource type="Texture2D" uid="uid://dbj4d5upc3lnd" path="res://assets/enviroment/tilesets/terrainTiles_default.png" id="1_gwwo4"]
+[ext_resource type="Texture2D" uid="uid://dhpvkk7o0cbi8" path="res://assets/enviroment/props/transparent_tile.png" id="1_tyfgh"]
 [ext_resource type="Texture2D" uid="uid://dqlufph1l1gyr" path="res://assets/enviroment/tilesets/trees_merged.png" id="2_85w28"]
 [ext_resource type="Texture2D" uid="uid://b2x7yahcxesqw" path="res://assets/enviroment/tilesets/crates_merged.png" id="2_1072t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8n70u"]
+texture = ExtResource("1_tyfgh")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdprn"]
 texture = ExtResource("1_gwwo4")
@@ -114,7 +120,7 @@ texture_region_size = Vector2i(64, 64)
 
 [resource]
 tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 4
+physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Road"
@@ -122,4 +128,5 @@ terrain_set_0/terrain_0/color = Color(0.147425, 0.427106, 0.47747, 1)
 sources/1 = SubResource("TileSetAtlasSource_vdprn")
 sources/7 = SubResource("TileSetAtlasSource_5ib81")
 sources/10 = SubResource("TileSetAtlasSource_0q42k")
+sources/0 = SubResource("TileSetAtlasSource_8n70u")
 tile_proxies/coords_level = [[8, Vector2i(0, 0)], [10, Vector2i(0, 0)], [9, Vector2i(0, 0)], [10, Vector2i(1, 0)]]

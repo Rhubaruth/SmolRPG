@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=3 uid="uid://b03dh4ytwsc6"]
+
+[ext_resource type="PackedScene" uid="uid://cqd72sct4x5fy" path="res://scenes/maps/map1.tscn" id="1_4h2b2"]
+[ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_b1f5h"]
+[ext_resource type="Theme" uid="uid://bywetdfvxh1i5" path="res://resources/themes/game_ui.tres" id="1_x0dvo"]
+[ext_resource type="PackedScene" uid="uid://cxr5u5oa6pc8q" path="res://scenes/ui/shop_button.tscn" id="2_eo6ms"]
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="2_q6owm"]
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="3_v7yjn"]
+[ext_resource type="Resource" uid="uid://cng0agorkk7to" path="res://resources/resources/turrets/gun_shop.tres" id="5_6y86o"]
+[ext_resource type="Resource" uid="uid://k3hui8ckgrk7" path="res://resources/resources/turrets/missile_shop.tres" id="6_2c6cf"]
+[ext_resource type="Texture2D" uid="uid://dvx0i013ev2hd" path="res://assets/icons/arrow_basic_e.png" id="9_3bubh"]
+[ext_resource type="Texture2D" uid="uid://cs41wqyrmk8vk" path="res://assets/icons/play_disabled.png" id="10_31uap"]
+[ext_resource type="Texture2D" uid="uid://bpmcu5kp7bdth" path="res://assets/icons/play_pressed.png" id="10_dbxkq"]
+[ext_resource type="Texture2D" uid="uid://csjako0rd4q2m" path="res://assets/icons/fast_normal.png" id="11_l1pmw"]
+[ext_resource type="Texture2D" uid="uid://cbmoaoapyvcjq" path="res://assets/icons/fast_disabled.png" id="12_qxmi3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_olf8t"]
+load_path = "res://.godot/imported/fast_pressed.png-794e9710c93114c7397beca306c74d67.ctex"
+
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("map_node")]
+script = ExtResource("1_b1f5h")
+map_node = NodePath("Map1")
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("2_q6owm")
+
+[node name="Map1" parent="." instance=ExtResource("1_4h2b2")]
+
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("PLAY_BUTTON", "FAST_BUTTON")]
+script = ExtResource("3_v7yjn")
+PLAY_BUTTON = NodePath("HUD/Background/HBoxContainer/Play")
+FAST_BUTTON = NodePath("HUD/Background/HBoxContainer/Fast")
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="ColorRect" parent="UI/HUD"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.239216, 0.243137, 0.360784, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/Background"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+mouse_filter = 0
+theme = ExtResource("1_x0dvo")
+alignment = 1
+
+[node name="gun" parent="UI/HUD/Background/VBoxContainer" instance=ExtResource("2_eo6ms")]
+layout_mode = 2
+stats = ExtResource("5_6y86o")
+
+[node name="missile" parent="UI/HUD/Background/VBoxContainer" instance=ExtResource("2_eo6ms")]
+layout_mode = 2
+stats = ExtResource("6_2c6cf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/Background"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_x0dvo")
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="UI/HUD/Background/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_3bubh")
+texture_pressed = ExtResource("10_dbxkq")
+texture_disabled = ExtResource("10_31uap")
+
+[node name="Fast" type="TextureButton" parent="UI/HUD/Background/HBoxContainer"]
+modulate = Color(0.925791, 0.849308, 1.92523e-06, 1)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("11_l1pmw")
+texture_pressed = SubResource("CompressedTexture2D_olf8t")
+texture_disabled = ExtResource("12_qxmi3")
+
+[connection signal="wave_end" from="Spawner" to="." method="_on_spawner_wave_end"]
+[connection signal="pressed" from="UI/HUD/Background/HBoxContainer/Play" to="UI" method="_on_play_pressed"]
+[connection signal="toggled" from="UI/HUD/Background/HBoxContainer/Fast" to="UI" method="_on_fast_toggled"]

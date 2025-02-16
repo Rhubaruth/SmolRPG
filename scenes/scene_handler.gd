@@ -13,7 +13,7 @@ func start_new_game():
 		#child.queue_free()
 	if mainMenu:
 		mainMenu.queue_free()
-	var game_scene = load("res://scenes/maps/map1.tscn").instantiate()
+	var game_scene = load("res://scenes/game_scene.tscn").instantiate()
 	add_child(game_scene)
 	pass
 

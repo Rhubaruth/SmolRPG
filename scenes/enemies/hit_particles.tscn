@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://gsfnkj5e5p6y"]
+
+[ext_resource type="Script" path="res://scenes/enemies/tank_hit_particles.gd" id="1_sggn7"]
+
+[sub_resource type="Gradient" id="Gradient_0hbv4"]
+colors = PackedColorArray(0.632226, 6.37732e-07, 2.40654e-07, 1, 0.796078, 0, 0, 0.529412)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_abqep"]
+gradient = SubResource("Gradient_0hbv4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vvtb5"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 325.0
+initial_velocity_max = 475.0
+gravity = Vector3(0, 0, 0)
+scale_min = 7.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_abqep")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+top_level = true
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_vvtb5")
+lifetime = 0.07
+one_shot = true
+explosiveness = 0.05
+randomness = 0.5
+visibility_rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("1_sggn7")
+SPAWN_RECT = Rect2(-16, -16, 32, 32)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0li7u76w1qvk"]
+
+[ext_resource type="Script" path="res://scenes/turrets/turret.gd" id="1_qwu4i"]
+
+[node name="TurretBasic" type="Node2D"]
+script = ExtResource("1_qwu4i")
+
+[node name="Range" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+debug_color = Color(0, 0.803922, 0.937255, 0.156863)
+
+[node name="Base" type="Sprite2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="area_entered" from="Range" to="." method="_on_range_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_exited"]

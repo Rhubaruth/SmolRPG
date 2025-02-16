@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TurretShopStats" load_steps=2 format=3 uid="uid://cng0agorkk7to"]
+
+[ext_resource type="Script" path="res://resources/resources/turrets/turretshop_stats.gd" id="1_35j2a"]
+
+[resource]
+script = ExtResource("1_35j2a")
+SHOP_ICON_PATH = "res://assets/towers/tops/towerDefense_tile249.png"
+TURRET_SCENE = "res://scenes/turrets/gun_tier1.tscn"
+COST = 200

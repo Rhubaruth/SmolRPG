@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccx1qnfmywohj"]
+[gd_scene load_steps=6 format=3 uid="uid://ccx1qnfmywohj"]
 
-[ext_resource type="Texture2D" uid="uid://byuffewqncix" path="res://assets/towers/tops/towerDefense_tile249.png" id="1_2qsjo"]
-[ext_resource type="Script" path="res://scenes/turrets/gun_tier1.gd" id="1_31bav"]
+[ext_resource type="PackedScene" uid="uid://d0li7u76w1qvk" path="res://scenes/turrets/turret_basic.tscn" id="1_1cy36"]
 [ext_resource type="Texture2D" uid="uid://cxywxva5a1nhf" path="res://assets/towers/bases/towerDefense_tile180.png" id="1_yniks"]
+[ext_resource type="Resource" uid="uid://bcurvhorevtw" path="res://resources/resources/turrets/gun_tier1.tres" id="2_ce13s"]
+[ext_resource type="PackedScene" uid="uid://cef1egp5u80uh" path="res://scenes/components/gun-components/gun_revolver.tscn" id="4_s54t6"]
 
-[node name="GunTier1" type="Node2D"]
-script = ExtResource("1_31bav")
+[sub_resource type="CircleShape2D" id="CircleShape2D_gxo3r"]
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="GunTier1" node_paths=PackedStringArray("GUN_COMPONENT") instance=ExtResource("1_1cy36")]
+GUN_COMPONENT = NodePath("GunComponent")
+stats = ExtResource("2_ce13s")
+
+[node name="CollisionShape2D" parent="Range" index="0"]
+shape = SubResource("CircleShape2D_gxo3r")
+
+[node name="Base" parent="." index="1"]
 texture = ExtResource("1_yniks")
 
-[node name="Top" type="Sprite2D" parent="."]
-texture = ExtResource("1_2qsjo")
-offset = Vector2(12, 0)
-
-[node name="Flash_Position" type="Marker2D" parent="Top"]
-position = Vector2(40, 0)
+[node name="GunComponent" parent="." index="3" instance=ExtResource("4_s54t6")]
